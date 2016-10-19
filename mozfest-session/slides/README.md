@@ -30,6 +30,8 @@ Things to cover
     * Background access
   * Controlling the granularity of permission requests.
 
+---
+
 ### An interesting example
 Let us say an app requests to "read battery statistics"
 
@@ -37,14 +39,18 @@ Let us say an app requests to "read battery statistics"
         description: 'Allows an application to read the current low-level battery use data. May allow the application to find out detailed information about which apps you use.' }`
 
   Q:What can just the battery statistics reveal?
+  
   A: "Location tracking" ([Article on wired](https://www.wired.com/2015/02/powerspy-phone-tracking/), [Original research paper](https://crypto.stanford.edu/powerspy/files/powerspy.pdf))
 
 
   Q: Now, the second part. What if someone knows which apps you use?
+  
   A: Your demographic details. ([Article on Washington Post](https://www.washingtonpost.com/news/the-intersect/wp/2016/03/03/quiz-can-we-guess-your-age-and-income-based-solely-on-the-apps-on-your-phone/#), [Original research paper](https://arxiv.org/pdf/1603.00059v1.pdf))
 
 Capability of the permissions and possibility of doing weirdest things :)
+
 ---
+
 ### Motivation: Why is this a problem? (3)
 * Let us be honest: We never read the privacy policies!
   * Coorelating privacy policy text and capability of apps!
