@@ -57,7 +57,7 @@ Capability of the permissions and possibility of doing weirdest things :)
 
 ---
 ### Hands on session
-  - [] Install necesary libraries.
+  - [ ] Install necesary libraries.
     * `npm install google-play-scraper`
   - [ ] Learn to know more about your favorite apps from the command line.
     - [ ] Search/Similar
