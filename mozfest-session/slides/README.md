@@ -89,3 +89,4 @@ Capability of the permissions and possibility of doing weirdest things :)
 - [List of all android permissions](https://gist.github.com/Arinerron/1bcaadc7b1cbeae77de0263f4e15156f)
 - [Sharelab: Invisible infrastructures of mobile permissions](https://labs.rs/en/invisible-infrastructures-mobile-permissions/)
 - [How to Detect Apps Leaking Your Data](https://www.technologyreview.com/s/428772/how-to-detect-apps-leaking-your-data/)
+- Example of claerly written policies: "HotJar", All-in-one online tracking analytics and feedback platform [Privacy Policy](https://www.hotjar.com/privacy), [Cookies](https://www.hotjar.com/cookies) and [DNT Opt-Out instructions](https://www.hotjar.com/opt-out).
