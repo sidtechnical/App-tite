@@ -1,0 +1,758 @@
+<!DOCTYPE HTML>
+<!-- <html lang="en-US"> -->
+<html lang="en-US" class="fade">
+<!-- 
+  ^ a class of "fade" makes slides fade smoothly into one another
+ -->
+<!-- <html lang="en-US" class="nonumbers"> -->
+<!-- 
+  If you want no numbers on the slides add a "nonumbers" class 
+  to the HTML element.
+  Adding a class of "fade" will make slides fade into another. 
+-->
+<head>
+  <meta charset="UTF-8">
+  <title>Hack the permissions</title>
+<!-- 
+  If you upload your slides to the web, ensure that you have 
+  a good title - this shows up in search results and social
+  media links
+ -->
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <link rel="stylesheet" href="themes/mozilla/styles/style.css">
+</head>
+<body class="list">
+  <header class="caption">
+    <h1>Measuring privacy risk and implied consent in app permissions</h1>
+    <p class="footer">
+      <br/> Suchana Seth and Sid Rao 
+      <br/> Ford-Mozilla Open Web Fellows
+      <!-- {your <a href="http://twitter.com/">@twitter</a> or 
+      <a href="mailto:you@email.com">you@email.com</a>} -->
+    </p>
+  </header>
+  <aside class="talkdescription">
+  <!--   <p>This slide deck is using the shower system - roll over the previews to see the notes and click any slide to go into presentation mode. Then use keys to navigate -->. 
+    <button onclick="goFullScreen()">Go fullscreen</button></p>
+    <p class="abstract">
+      <strong>Abstract: </strong>
+       Participants will learn to identify and measure the potential consequences of granting smartphone apps different permissions - especially in the light rapid strides in data science that allows us to predict user behavior better and better from more and more innocuous but ubiquitous data. They will learn how to measure such risks, and how to talk objectively about differing degrees of user preference for privacy.
+    </p>
+  </aside>
+
+<!-- 
+    Simply copy the whole block for each slide you want.
+  Special slides get extra classes. Each slide needs an ID 
+  to allow for bookmarking and target jumping.
+-->
+ <!-- Slide #1 -->
+  <div id="cover" class="slide"><div>
+    <section>
+      <header>
+        <h2>Hack the permissions</h2>
+      </header>
+      <figure class="middle shadow frame swing">
+          <img src="pictures/app-tite-pics/PermissionDisaster.jpg" 
+              class="middle shadow" height="400"
+              alt="1% of the code has 100% of the permissions Occupy Kernel!">
+      </figure>
+      <small class="byline">
+        {Suchana}, {Sid}, {MozFest2016}, {London}, {date}
+      </small>
+      <footer class="notes">
+        This is a simple cover slide with an image in the middle
+      </footer>
+    </section>
+  </div></div>
+
+<!-- end slide block -->
+
+<div id="suchana" class="slide"><div>
+    <section>
+      <header>
+        <h2>Suchana Seth</h2>
+      </header>
+      <img src="pictures/app-tite-pics/Suchana.jpg" 
+           class="right" 
+           alt="Suchana Seth">
+
+      <ul>
+        <li>Open Web Fellow @ Data &amp; Society </li>
+        <li>a physicist-turned-data scientist </li>
+        <li>volunteers with <b>DataKind</b> to mentor <b>data-for-good projects</b></li>
+        <li>Currently working on "Ethics of big data"</li>
+      </ul>     
+
+     <footer class="notes">
+        Who is Suchana?
+      </footer>
+    </section>
+  </div></div>
+
+  <!-- end slide block -->
+
+
+
+<!-- Slide #3 -->
+
+  <div id="sid" class="slide"><div>
+    <section>
+      <header>
+        <h2>Sid Rao</h2>
+      </header>
+      <img src="pictures/app-tite-pics/Sid3.jpg" 
+           class="left" 
+           alt="Sid Rao">
+
+      <ul>
+        <li>Open Web Fellow @ European Digital Rights (EDRi)</li>
+        <li>#FOSS #Crypto #Privacy #Security</li>
+        <li>Doctoral candidate @ <b>Secure Systems Group</b>, Aalto University</li>
+        <li>Currently working on <b>"Metadata and Privacy"</b>, User tracking and "Why Copyright&copy;?"</li>
+      </ul>
+
+         
+
+      <small class="credits">
+        <a href="https://advocacy.mozilla.org/en-US/open-web-fellows/fellows2016">
+          Know more about our Open Web Fellow cohort 2.0
+        </a>
+      </small>
+      <footer class="notes">
+      Who is Sid?
+      </footer>
+    </section>
+  </div></div>
+
+ <!-- end slide block -->
+
+<!-- Slide #2 -->
+
+
+
+ <!-- Slide #4 -->
+
+   <div id="ThisSession" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2><strong>What is this session about?</h2>
+      </header>
+      <footer class="notes">
+      This session is about&hellip;
+      </footer>
+    </section>
+  </div></div>  
+
+
+  <!-- end slide block -->
+
+<!-- Slide #5 -->
+<div id="aboutTheSession" class="slide"><div>
+    <section>
+      <header>
+        <h2>In this session </h2>
+      </header>
+      <ul class="inner">
+        <li class="active">Know the android app permissions better.</li>
+        <li>Capability of app permissions &rarr; Hidden infrastructure.</li>
+        <li>Know the privacy risks from the policies.</li>
+        <li>Contribute to the discussion of "quantifying privacy".</li>
+       
+      </ul>
+      <div style="font-weight:bold;">
+      1. Know the background. <br/>
+      2. Some basic scripts. <br/>
+      3. Discuss the future.
+      </div>
+      <footer class="notes">
+      </footer>
+    </section>
+ </div></div>
+
+  <!-- end slide block -->
+
+<!-- Slide #6 -->
+
+   <div id="Motivation" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>
+          <div class="en-US">Why?</div>
+        </h2>
+        <p> Our motivation </p>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+<!-- end slide block -->
+
+<!-- Slide #7 -->
+
+<div id="Motivation1" class="slide oneline"><div>
+    <section>
+      <header>
+        <!-- <h2><strong>Imagine</strong>: One line slide</h2> -->
+        <h2>1. Very (use)<strong>less information</strong> provided.</h2>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+
+<!-- end slide block -->
+
+ <div id="imageshadow" class="slide"><div>
+    <section>
+      <header>
+        <h2>Example: Pokémon GO</h2>
+      </header>
+      <img src="pictures/app-tite-pics/UseLessInfo1.png"
+           class="middle shadow"
+           alt="Firefox OS phones">
+      <small class="credits">
+        <a href="https://play.google.com/store/apps/details?id=com.nianticlabs.pokemongo">
+          Pokémon GO - Google Play Store
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+
+
+
+<!-- Slide # -->
+
+<div id="Motivation2" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2>2. We don't understand the <strong>permissions</strong>.</h2>
+
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+
+<!-- end slide block -->
+
+
+
+<!-- Slide # -->
+
+ <div id="PermissionList" class="slide"><div>
+    <section>
+      <header>
+        <h2>Permissions are real mess</h2>
+      </header>
+
+       <img src="pictures/app-tite-pics/AppManifest.png" 
+           class="left" 
+           alt="Android App Manifest">
+           <small class="credits">
+        <a href="https://developer.android.com/guide/topics/manifest/manifest-intro.html">
+          App Manifest - Android Developer Guide.
+        </a>
+      </small>
+
+      <ul style="font-size: 99%">
+        <li>Every application must have an <strong>AndroidManifest.xml</strong> file in its root directory.</li>
+        <li><code>< uses-permission /></code> is when your application is seeking the user's permission to use some feature.</li>
+        <li><code>< permission /></code> is when your application is requiring other apps to seek the user's permission to use some feature of yours.</li>
+      </ul>     
+
+      
+
+      <footer class="notes">
+      </footer>
+    </section>
+ </div></div>
+<!-- end slide block -->
+
+
+
+<div id="PermissionTypes" class="slide"><div>
+    <section>
+      <header>
+        <h2>More ways of granting permissions.</h2>
+      </header>
+      <ol class="longlist">
+        <li><code>< uses-permission-sdk-23></code> and <code>< uses-sdk></code></li> 
+        <li><code>< path-permission></code></li>
+        <li><code>< permission-group></code></li>
+        <li><code>< permission-tree></code></li>
+        <li><code>< grant-uri-permission></code></li>
+        <li><code>< uses-library></code></li>
+        <li><code>< uses-feature></code></li>
+        <li>Many more &hellip;&hellip;</li> 
+      </ol>
+      <div style="font-size: 125%; font-weight: bolder;" align="center">In total > 300 combinations. </div>
+      <div style="font-size: 85%;" align="center">(including access, feature, library, sdk, etc..) </div>
+      <small class="credits">
+        <a href="https://github.com/android/platform_frameworks_base/blob/master/core/res/AndroidManifest.xml">
+          List of all possible Android Permission combinations.
+        </a>
+      </small>
+      <footer class="notes"> 
+       
+      </footer>
+    </section>
+  </div></div>
+
+
+<div id="BeforeProceedingFurther" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2>Before proceeding further...</h2>
+
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+<!-- Slide #8 (Hands-on)-->  
+
+  <div id="install" class="slide"><div>
+    <section>
+      <header>
+        <h2>Install the Node.js module</h2>
+      </header>
+      A module to <strong>scrape</strong> application data from the Google Play.
+        <pre>
+        <code>npm install google-play-scraper</code>
+        <img src="pictures/app-tite-pics/npminstall.gif" 
+           alt="install" align="middle" width="580" style="display: block; margin: 0 auto;">
+        </pre>
+        
+      
+       <!--  <pre> -->
+       
+      <footer class="notes">
+      </footer>
+    </section>
+   </div></div>  
+
+
+<!-- end slide block -->
+
+<div id="search" class="slide"><div>
+    <section>
+      <header>
+        <h2>Search for an app with keyword</h2>
+      </header>
+      <pre style="font-size: 85%">       
+       # <u> search.js</u>
+        <code>var gplay = require('google-play-scraper');</code>
+        <code>gplay.search({term: "facebook",num: 2</code>
+        <code>}).then(console.log, console.log);</code>
+    <img src="pictures//app-tite-pics/searchjs.gif"  style="display: block; margin: 0 auto;" 
+    alt="searchjs" align="middle" width="520"><br/>
+       </pre>
+         <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+
+  <div id="detail" class="slide"><div>
+    <section>
+      <header>
+        <h2>Get more details</h2>
+      </header>
+      <pre style="font-size: 85%">       
+       # <u> detail.js</u>
+        <code>var gplay = require('google-play-scraper'); </code>
+        <code>gplay.app({appId: 'com.facebook.orca'}).then(console.log);</code>
+    <img src="pictures//app-tite-pics/detailjs.gif"  style="display: block; margin: 0 auto;" 
+    alt="searchjs" align="middle" width="520"><br/>
+       </pre>
+         <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+
+  <div id="permission" class="slide"><div>
+    <section>
+      <header>
+        <h2>Verbose permission info</h2>
+      </header>
+      <pre style="font-size: 85%">       
+       # <u> permission.js</u> 
+        <code>var gplay = require('google-play-scraper'); </code>
+        <code>gplay.permissions({appId: "com.facebook.orca"}).then(console.log);</code>
+        <img src="pictures//app-tite-pics/permissionjs.gif"  style="display: block; margin: 0 auto;" 
+    alt="searchjs" align="middle" width="520"><br/>
+    </pre>
+
+         <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+<!-- Slide # -->
+
+<div id="Motivation3" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2>3. <strong>Capabilities</strong> of permissions.</h2>
+
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+
+<!-- end slide block -->
+
+<!--slide # -->
+
+<div id="batterystats" class="slide"><div>
+    <section>
+      <header>
+        <h2>Example: Battery Statistics</h2>
+      </header>
+  <div align="center">
+       <strong><code> { permission: 'read battery statistics', </code></strong>
+    <code> description: 'Allows an application to read the current low-level </code><strong><code>battery use data</code></strong>. <code>May allow the application to find out detailed information about</code><strong><code>which apps you use.' } </code></strong>
+  </div>
+    <footer class="notes">
+      
+    </footer>
+    </section>
+  </div></div>
+<!-- end slide block -->
+
+<div id="JustTheBatteryStats" class="slide"><div>
+    <section>
+      <!-- <header>
+        <h2>and &hellip;&hellip; </h2>
+      </header> -->
+      <p align="center">  
+      <mark><strong>Just the battery permission</strong>.<br> NO GPS or any ther location permission needed!</mark>
+      </p>
+      <blockquote>
+        <p>What can just the battery statistics reveal?</p>
+       </blockquote>
+       <strong class="middle" style="font-size: 233%"><br> <br>Location tracking</strong>
+
+      <small class="credits">
+        <a href="https://www.wired.com/2015/02/powerspy-phone-tracking/">
+          Spies can track you just by watching your phone's power use!
+        </a> <br>
+        <a href="https://www.usenix.org/node/190935"> <i>Y. Michalevsky et.al USENIX 2015, "PowerSpy: Location Tracking using Mobile Device Power Analysis" </i></a>
+      </small>
+      <footer class="notes">
+      </footer> 
+    </section>
+  </div></div>
+
+
+ <!-- end slide block -->
+
+<div id="JustTheListOfApps" class="slide"><div>
+    <section>
+      <!-- <header>
+        <h2>and &hellip;&hellip; </h2>
+      </header> -->
+      <p align="center">  
+      <mark><strong>Solely the list of apps</strong>.<br> and no further information!</mark>
+      </p>
+      <blockquote>
+        <p>What if someone knows which apps you use?</p>
+      </blockquote>
+       <strong class="middle" style="font-size: 157%"><br> <br><a href="https://www.washingtonpost.com/news/the-intersect/wp/2016/03/03/quiz-can-we-guess-your-age-and-income-based-solely-on-the-apps-on-your-phone/#">Your demographic details!</a></strong>
+      <small class="credits">
+        <a href="https://arxiv.org/pdf/1603.00059.pdf"> <i>E. Malmi et.al arXiv preprint, "You Are What Apps You Use: Demographic Prediction Based on User's Apps" </i></a>
+      </small>
+
+      <footer class="notes">
+      </footer> 
+    </section>
+  </div></div>
+
+
+<!-- Slide # -->
+
+<div id="Motivation4" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2>4. We don't<strong>read</strong> the privacy policies.</h2>
+
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+
+<!-- end slide block -->
+ 
+
+<!--Slide #  -->
+
+<div id="PolicyStats" class="slide"><div>
+    <section>
+      <header>
+        <h2>Some stats</h2>
+      </header>
+      <ul class="inner">
+        <li class="active">Avg. number of apps used on a smartphone: <strong>27</strong>.</li>
+        <li style="color: red">But, Avg. number of apps installed: <strong>95</strong>.</li>
+        <li>Avg. length of Privacy Policy: <strong>2518 </strong> words</li>
+        <li>Approximate time to read it: <strong>10</strong> mins</li>
+        <li>which means &hellip; <strong>950</strong> minutes</li>
+        <li style="color: red; font-weight: bolder;"> ~16 hours (or 2 work days) read all the Privacy Policy!</li>
+      </ul>
+
+       <small class="credits">
+        <a href="https://labs.rs/en/invisible-infrastructures-mobile-permissions/">Invisible Infrastructures : Mobile permissions by Share Foundation.</a>
+      </small>
+
+      <footer class="notes">
+      </footer>
+    </section>
+ </div></div>
+
+
+
+<div id="Problem1" class="slide oneline"><div>
+    <section>
+      <header>
+        <!-- <h2><strong>Imagine</strong>: One line slide</h2> -->
+        <h2>Welcome to the <strong>horrible UX</strong> maze!</h2>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>  
+
+<div id="basicdevtoolsfeatures" class="slide"><div>
+    <section>
+      <header>
+        <h2></h2>
+      </header>
+      <img src="pictures/app-tite-pics/PermissionTypes.png" 
+           alt="Developer tools"  width="85%" 
+           class="middle shadow">
+           
+      <p class="demourl"><a href="https://www.usenix.org/node/190931"> <i>K. Fawaz et.al USENIX 2015, "Anatomization and Protection of Mobile Apps’ Location Privacy Threats" </i></a></p> 
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>  
+
+
+<div id="TakeControlIntro" class="slide oneline"><div>
+    <section>
+      <header>
+        <!-- <h2><strong>Imagine</strong>: One line slide</h2> -->
+        <h2>Let us take <strong>control</strong>. </h2>
+      </header>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div> 
+
+
+<div id="TakeControl" class="slide"><div>
+    <section>
+      <header>
+        <h2>Take control of your permissions</h2>
+      </header>
+      <img src="pictures/app-tite-pics/TakeControl3.gif" 
+           alt="Earthphases" class="right" width="250">
+    
+      <h3 align="middle"><strong>Activity Time</strong></h3>
+     
+      <ul class="inner">
+        <li class="active">Open <strong>Settings</strong>. &check;</li>
+        <li>Click on <strong>Apps</strong>. &check;</li>
+        <li>Choose your favourite app. &check;</li>
+        <li>Click on <strong>Permissions</strong>. &check;</li>
+        <li>Tweak the permissions as per your privacy needs. &check;</li>
+      </ul>
+   
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+ <div id="CanWeTweakMore" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2><strong>Can we tweak more?</h2>
+      </header>
+      <footer class="notes">
+      Little more tweaking&hellip;
+      </footer>
+    </section>
+  </div></div>  
+
+
+  <div id="LocationAccuracy" class="slide"><div>
+    <section>
+      <header>
+        <h2>Possibly yes!</h2>
+      </header>
+      <img src="pictures/app-tite-pics/LocationAccuracy.png" class="right" width="250" alt="Location Accuracy">
+      <ul class="inner">
+        <li class="active">At least you can fine-tune the accuracy of location.
+        <li>&check; Open <strong>Settings</strong>.</li>
+        <li>&check; Click on <strong>Location</strong>.</li>
+        <li>&check; Click on <strong>Mode</strong></li>
+        <li><u>Remember</u>:"GPS" is more than enough. </li>
+      </ul>
+    <footer class="notes">
+    </footer>
+
+    </section>
+  </div></div>
+
+<!-- end slide block -->
+
+
+ <div id="ToolSuggestions" class="slide oneline"><div>
+    <section>
+      <header>
+        <h2>Some <strong>tools</strong> suggestions</h2>
+      </header>
+      <footer class="notes">
+      
+      </footer>
+    </section>
+  </div></div>  
+
+
+
+  <div id="PerformanceExplorer" class="slide"><div>
+    <section>
+      <header>
+        <h2><strong>Explore</strong> using "Permission Explorer"</h2>
+      </header>
+      <img src="pictures/app-tite-pics/PermissionExplorer.png" 
+           class="left" width="220" 
+           alt="PerformanceExplorer">
+
+      <ul>
+        <li><u>View by categories</u>: Which applications can access to your localization, contacts, calendar</li>
+        <li><u>View by applications</u>: Which permissions are used by your applications</li>
+        <li><u>View by permissions</u>: Which applications are using each permission</li>
+      </ul>     
+
+      <small class="credits">
+        <a href="https://play.google.com/store/apps/details?id=com.carlocriniti.android.permission_explorer">
+          Permission Explorer
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="xprivacy" class="slide"><div>
+    <section>
+      <header>
+        <h2><strong>Revoke</strong> permission using "xPrivacy"</h2>
+      </header>
+      <img src="pictures/app-tite-pics/Xprivacy.png" 
+           class="left" width="220" 
+           alt="xPrivacy">
+
+      <ul>
+        <li>Restrict the categories of data an app can access.</li>
+        <li>"No Data" or "Fake Data".</li>
+        <li><u><i>P.S</i></u></li>: Needs the phone to be rooted.
+      </ul>     
+
+      <small class="credits">
+        <a href="https://github.com/M66B/XPrivacy">
+         xPrivacy Framework
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="recon" class="slide"><div>
+    <section>
+      <header>
+        <h2>Find <strong>privacy leaks</strong> using "ReCon" </h2>
+      </header>
+      <img src="pictures/app-tite-pics/recon_pii.png" 
+           class="left" width="200" 
+           alt="Recon">
+
+      <ul>
+        <li>Analyzes your network traffic.</li>
+        <li>Tell if personal information is being transmitted.</li>
+        <li>Detects device/user identifiers used in 
+          <ul>
+            <li>tracking</li>
+            <li>geolocation leaks</li>
+            <li>unsafe password transmissions</li> 
+            <li>personal information such as name, address, gender, and relationship status</li>
+          </ul>
+      </ul>     
+
+      <small class="credits">
+        <a href="https://recon.meddle.mobi/">
+         ReCon Framework
+        </a>
+      </small>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+
+  
+
+  <div id="thanks" class="slide"><div>
+    <section>
+      <header>
+        <h2>Thanks</h2>
+      </header>
+      <img src="pictures/mozillaoverview/redpanda.jpg" class="right" alt="Red panda (Firefox)">
+      <ul class="nobull">
+        <li>{name}</li>
+        <li>{title}</li>
+        <li>{<a href="http://twitter.com/">@twitter</a>}</li>
+        <li><strong>Slides</strong>: {slideurl}</li>
+      </ul>
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/yortw/5798336827/">Photo by Yortw</a>
+      </small>
+
+    <footer class="notes">
+    </footer>
+
+    </section>
+  </div></div>
+
+  <!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+  <div class="progress"><div></div></div>
+<!--   <div id="langMenuDivId"> -->
+    <!-- Having event.stopPropagation() prevents keypresses on the language menu from affecting slideshow progression -->
+   <!--  <select id="langMenuId" onchange="changeLanguage();" onkeydown="event.stopPropagation()">
+      <option value="en-US">English</option>
+      <option value="zh-CN">中文（简体）</option>
+      <option value="zh-TW">中文（繁體）</option>
+      <option value="ja-JP">日本語</option>
+    </select>
+  </div> -->
+  <script src="scripts/script.js"></script>
+  <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+</body>
+</html>
